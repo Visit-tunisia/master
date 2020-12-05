@@ -1,4 +1,11 @@
+<?php
+include '../../../Controller/ContrArticle.php';
+include_once '../../../Model/Articles.php';
 
+$articlee= new articleC();
+$liste=$articlee->AfficherArticle();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,11 +35,56 @@
         <?php
             include('navBar.php');
         ?>
+
+      
         <?php
-include("../../../Controller/AfficherArticle.php");
+/*include("../../../Controller/AfficherArticle.php"); */
  ?>
-         
+ <div id="container">
+         <h2>Articles</h2>
+    <a href="ajouterArtic.php" class="btn btn-info">Ajouter un article</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Auteur</th>
+                    <th>date</th>
+                    <th>titre</th>
+                    <th>Description</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+              /*  if($result->num_rows>0)
+                { */
+                    foreach ($liste as $pr)
+                    {  ?>
+                        <tr>
+                        <td><?php echo $pr['IdArticle']; ?></td>
+                <td><?php echo $pr['AuteurArticle']; ?></td>
+                <td><?php echo $pr['DateArticle']; ?></td>
+                <td><?php echo $pr['TitreArticle']; ?></td>
+                <td><?php echo $pr['DescriptionArticle']; ?></td>
+                <td><a href="ModifierArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Update</a></td>
+                <td><a href="../../../Controller/SupprimerArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Delete</a></td>
+            </tr>
+
+<?php
+                    }
+               // }
+
+                ?>
+                
 
 
+            </tbody>
+
+
+
+
+        </table>
+</div>
+</div>
 </body>
 </html>
