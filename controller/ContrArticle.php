@@ -7,8 +7,8 @@ class articleC
 
     public function ajouterArticle($article)
     {
-        $sql = "INSERT INTO articles(TitreArticle,DescriptionArticle,AuteurArticle,DateArticle) 
-			VALUES (:titre,:texte,:auteur,:Datearticle)";
+        $sql = "INSERT INTO articles(TitreArticle,DescriptionArticle,AuteurArticle,DateArticle,DateCreation,ImageUrl,Status) 
+			VALUES (:titre,:texte,:auteur,:Datearticle,:Datecreation,:Imageurl,:Status)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -20,7 +20,10 @@ class articleC
                /* 'source' => $article->getSource(),
                 'urlImage' => $article->getUrlImage(),
                 'notifCreateur' => $article->getNotifCreateur(), */
-                'Datearticle' => $article->getDatearticle()
+                'Datearticle' => $article->getDatearticle(),
+                'Datecreation'=> $article->getDateCreation(),
+                'Imageurl'=> $article->getImageUrl(),
+                'Status'=> $article->getStatus()
 
             ]);
         } catch (Exception $e) {
@@ -65,10 +68,14 @@ class articleC
 						TitreArticle = :titre, 
 						DescriptionArticle= :texte,
 						AuteurArticle = :auteur,
+
 					/*	source = :source,
 						urlImage = :urlImage,
                         notifCreateur = :notifCreateur, */
-                        DateArticle = :Datearticle
+                        DateArticle = :Datearticle,
+                        DateCreation = :Datecreation,
+                        ImageUrl = :Imageurl,
+                        Status = :Status
 					WHERE IdArticle = :IdArticle'
             );
             $query->execute([
@@ -79,6 +86,9 @@ class articleC
                 'urlImage' => $article->getUrlImage(),
                 'notifCreateur' => $article->getNotifCreateur(), */
                 'Datearticle' => $article->getDatearticle(),
+                'Datecreation'=> $article->getDateCreation(),
+                'Imageurl'=> $article->getImageUrl(),
+                'Status'=> $article->getStatus(),
                 'IdArticle' => $id
             ]);
             echo $query->rowCount() . " records UPDATED successfully <br>";
