@@ -42,7 +42,7 @@ try {
   }
   else
   {
-    header('Location: http://localhost/project/master/view/login%20projet/login.html');
+    header('Location: http://localhost/project/master/view/login_projet/login.html');
     exit();
   }
 
