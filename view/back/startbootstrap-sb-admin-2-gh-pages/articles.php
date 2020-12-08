@@ -48,14 +48,20 @@ $liste=$articlee->AfficherArticle();
                 <tr>
                     <th>ID</th>
                     <th>Auteur</th>
-                    <th>date</th>
-                    <th>titre</th>
+                    <th>Date de publication</th>
+                    <th>Date de creation / modification</th>
+                    <th>Titre</th>
+                    <th>Image Url</th>
                     <th>Description</th>
+                    <th>Status</th>
 
                 </tr>
             </thead>
             <tbody>
+
                 <?php
+             //   $date = date('yy-m-d h:i:s');
+            // echo $date;
               /*  if($result->num_rows>0)
                 { */
                     foreach ($liste as $pr)
@@ -64,10 +70,13 @@ $liste=$articlee->AfficherArticle();
                         <td><?php echo $pr['IdArticle']; ?></td>
                 <td><?php echo $pr['AuteurArticle']; ?></td>
                 <td><?php echo $pr['DateArticle']; ?></td>
+                <td><?php echo $pr['DateCreation']; ?></td>
                 <td><?php echo $pr['TitreArticle']; ?></td>
+                <td><?php echo $pr['ImageUrl']; ?></td>
                 <td><?php echo $pr['DescriptionArticle']; ?></td>
-                <td><a href="ModifierArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Update</a></td>
-                <td><a href="../../../Controller/SupprimerArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Delete</a></td>
+                <td><?php echo $pr['Status']; ?></td>
+                <td><a class="btn btn-success" href="ModifierArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Update</a></td>
+                <td><a class="btn btn-danger"href="../../../Controller/SupprimerArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Delete</a></td>
             </tr>
 
 <?php

@@ -2,30 +2,67 @@
 include "../../../controller/ContrArticle.php";
 include_once "../../../model/Articles.php";
 
+//$datetime = "28-1-2011 14:32:55";
+
+
+
+
 
 $articleC = new articleC();
 $error = "";
+
+
 if (
     isset($_POST["titre"]) &&
     isset($_POST["texte"]) &&
     isset($_POST["auteur"]) &&
-    isset($_POST["DateArticle"])
+    isset($_POST["ImageUrl"]) &&
+    isset($_POST["DateArticleN"])&&
+    isset($_POST["TimeArticleN"]) 
 ) {
+	
     if (
         !empty($_POST["titre"]) &&
         !empty($_POST["texte"]) &&
         !empty($_POST["auteur"]) &&
-        isset($_POST["DateArticle"])
-
+        !empty($_POST["ImageUrl"]) &&
+        isset($_POST["DateArticleN"])&&
+    isset($_POST["TimeArticleN"]) 
     ) {
+    	
+    	$datetimeN = $_POST['TimeArticleN'].' '.$_POST['DateArticleN'];
+	 	$datetimeN = date("Y-m-d H:i:s",strtotime($datetimeN));
+	 
+	 	$datetimeC= $_POST['TimeArticleC'].' '.$_POST['DateArticleC'];
+	 	$datetimeC = date("Y-m-d H:i:s",strtotime($datetimeC));
+    //	echo 'aaaaaaaaaaaaaa'.$article['DateArticle'];
+	 	if ($datetimeN <= $datetimeC) {
+    $statuss='PUBLIE';
+	}
+	else
+	{
+	$statuss='NON PUBLIE';
+	}
+
+
         $article = new article(
             $_POST['titre'],
             $_POST['texte'],
             $_POST['auteur'],
-            $_POST['DateArticle']
+            $datetimeN,
+           $datetimeC,
+            $_POST['ImageUrl'],
+            $statuss
 
         );
+      //  $dateN = date('Y-m-d', strtotime($article['DateArticle']));
+       // $timeN = $article['DateArticle']->format('H:i:s');
+       // echo $article['DateArticle'];
+		//$timeN = date('H:i:s', strtotime($_POST['DateArticle']));
+		//echo $timeN;
+		echo "aaaaaaaaaa4";
         $articleC->modifierarticle($article, $_GET['IdArticle']);
+        echo "aaaaaaaaaa5";
     //    header('Location:../front/blogs.php');
     } else
         echo "Missing information";
@@ -109,13 +146,34 @@ if (
          
 
                                 <div class="form-group">
-                                    <label for="DateArticle">Datearticle</label>
-                                    <input name="DateArticle" type="date" value="<?php echo $article['DateArticle'];?>">
+                                    <label for="DateArticle">Date de publication de l'article</label>
+                                    <input name="DateArticleN" type="date" value="<?php 
+                                    $dateN = date('Y-m-d', strtotime($article['DateArticle']));
+
+
+
+
+
+                                    echo $dateN;?>">
+                                    <input name="TimeArticleN" type="time" value="<?php
+                                    $timeN = date('H:i', strtotime($article['DateArticle']));
+       									// echo $article['DateArticle'];
+                                    echo $timeN;?>">
                                 </div>
+                                <div class="form-group">
+                                    <label for="DateArticle">Date de creation/modification de l'article</label>
+                                    <input name="DateArticleC" type="date" value="<?php $dateC = date('Y-m-d'); echo $dateC; ?>" readonly>
+                                    <input name="TimeArticleC" type="time" value="<?php $timeC = date('H:i'); echo $timeC;  ?>" readonly>
+                                </div>
+                                <div class="form-group">
+                                <label>Image Url</label>
+										<input type="text" name="ImageUrl" value="<?php echo $article['ImageUrl'];?>">
+								</div>
+								
 
 
 
-                                <button type="submit" value="Envoyer" class="btn btn-primary">Submit</button>
+                                <button type="Submit" value="Envoyer" class="btn btn-primary">Submit</button>
 
                             </form>
                         </div>
