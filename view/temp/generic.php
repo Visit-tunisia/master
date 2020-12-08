@@ -11,8 +11,7 @@
 		<title>Generic - Forty by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="assets/css/style.css" />
 	</head>
 	<body class="is-preload" id="body">
 
@@ -33,7 +32,7 @@
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
 							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
+							<li><a href="generic.html">Geric</a></li>
 							<li><a href="elements.html">Elements</a></li>
 						</ul>
 						<ul class="actions stacked">
@@ -53,38 +52,47 @@
 									</header>
 									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
 									<div class="grid-container">
-										<div class="card" style="width: 90%;">
-											<img src="assets/img/cap-serrat-negro-201z.jpg" class="card-img-top" alt="...">
-											<div class="card-body">
-											  <h5 class="card-title">Card title</h5>
-											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											  <a href="#" class="btn btn-primary">Go somewhere</a>
-											</div>
-										</div>
-										<div class="card" style="width: 90%;">
-											<img src="assets/img/cap-serrat-negro-201z.jpg" class="card-img-top" alt="...">
-											<div class="card-body">
-											  <h5 class="card-title">Card title</h5>
-											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											  <a href="#" class="btn btn-primary">Go somewhere</a>
-											</div>
-										</div>
-										<div class="card" style="width: 90%;">
-											<img src="assets/img/cap-serrat-negro-201z.jpg" class="card-img-top" alt="...">
-											<div class="card-body">
-											  <h5 class="card-title">Card title</h5>
-											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											  <a href="#" class="btn btn-primary">Go somewhere</a>
-											</div>
-										</div>
-										<div class="card" style="width: 90%;">
-											<img src="assets/img/cap-serrat-negro-201z.jpg" class="card-img-top" alt="...">
-											<div class="card-body">
-											  <h5 class="card-title">Card title</h5>
-											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-											  <a href="#" class="btn btn-primary">Go somewhere</a>
-											</div>
-										</div>
+												<?php 
+												$servername = "localhost";
+												$username = "root";
+												$password = "";
+												try {
+													$conn = new PDO("mysql:host=$servername;dbname=projet", $username, $password);
+													// set the PDO error mode to exception
+													$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+												
+												
+												} catch(PDOException $e) {
+													echo "Connection failed: " . $e->getMessage();
+												}
+												$req=" SELECT * from evenement ; ";
+												foreach ($conn->query($req) as $res)
+												{
+													echo('
+																<div class="card" style="width: 90%;">
+																<img src="assets/img/cap-serrat-negro-201z.jpg" class="card-img-top" alt="...">
+																<div class="card-body">
+																<h5 class="card-title">'.$res["nomEv"].'</h5>
+																<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
+																<button class="btn btn-primary" style="border=0;">Go somewhere</button>
+																<a href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='.$res["idEv"].'" class="btn btn-primary">Modifier un évènement</a>
+																<form action="delete.php" method="post">
+																<input type="hidden" value="'.$res["idEv"].'"  name="idEv" />
+																<button class="btn btn-primary" style="margin-top=2px;">Supprimer</button>
+																</form>
+																</div>
+															</div>
+												');
+												}
+
+												?>
+										
+										
+									</div>
+									<div class="card" >
+									<div class="card-body">
+									<a href="http://localhost/project/master/view/temp/ajout_ev/inscription.html" class="btn btn-primary">Ajouter un évènement</a>
+									</div>
 									</div>
 								</div>
 							</section>
