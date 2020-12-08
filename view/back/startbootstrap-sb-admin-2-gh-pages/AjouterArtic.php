@@ -1,16 +1,31 @@
 <?php
 
 include('../../../Controller/ContrArticle.php');
-
-if(isset($_POST["Auteur"]) && 
-        isset($_POST["date"]) &&
-        isset($_POST["titre"]) && 
-        isset($_POST["login"]) && 
-        isset($_POST["Description"]))
+include_once "../../../model/Articles.php";
+if(isset($_POST['Submit']))
 {
 	
 	 $ArtiC = new articleC();
-	 $articlec=new article($_POST['titre'],$_POST['Description'],$_POST['Auteur'],$_POST['date']);
+
+	 $datetime = $_POST['date'].' '.$_POST['time'];
+	 $datetime = date("Y-m-d H:i:s",strtotime($datetime));
+	 
+	 $datetimeC = $_POST['dateC'].' '.$_POST['timeC'];
+	 $datetimeC = date("Y-m-d H:i:s",strtotime($datetimeC));
+
+	// echo $datetime;
+	 //echo $datetimeC;
+
+	if ($datetime <= $datetimeC) {
+    $statuss='PUBLIE';
+	}
+	else
+	{
+	$statuss='NON PUBLIE';
+	}
+
+
+	 $articlec=new article($_POST['titre'],$_POST['Description'],$_POST['Auteur'],$datetime,$datetimeC,$_POST['Imageurl'],$statuss);
 
     /*$articlec->Auteur= $_POST['Auteur'];
 	$articlec->date= $_POST['date'];
@@ -76,9 +91,21 @@ if(isset($_POST["Auteur"]) &&
 	</td>
 	
 </tr>
+
 <tr>
-	<td><label for="date">Date</label>
+	<td><label for="date">Date de Creation</label>
+		<input type="date" name="dateC" value="<?php $datee = date('Y-m-d'); echo $datee; ?>" readonly>
+		<input type="time" name="timeC" value="<?php $timee = date('H:i'); echo $timee;  ?>" readonly>
+	</td>
+	
+</tr>
+
+
+
+<tr>
+	<td><label for="date">Date de publication</label>
 		<input type="date" name="date">
+		<input type="time" name="time">
 	</td>
 	
 </tr>
@@ -89,6 +116,14 @@ if(isset($_POST["Auteur"]) &&
 	
 </tr>
 <tr>
+	<td><label>Image Url</label>
+		<input type="text" name="Imageurl">
+	</td>
+	
+</tr>
+
+
+<tr>
 	<td><label for="comment">Description</label>
 		<textarea type="text" name="Description" cols="80" row="150"></textarea> </td>
 	
@@ -96,9 +131,9 @@ if(isset($_POST["Auteur"]) &&
 
 <tr>
 			
-			<td><button type="Submit"  name="Submit" >submit</button>
+			<td><button class="btn btn-primary" type="Submit"  name="Submit" >submit</button>
 				<!--<input type="Submit" value="Envoyer" name="submit"> -->
-				<input type="Submit" value="Annuler"></td>
+				<input class="btn btn-warning" type="Submit" value="Annuler"></td>
 	
 </tr>
 
