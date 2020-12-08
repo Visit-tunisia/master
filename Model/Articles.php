@@ -9,6 +9,9 @@ class article
    // private $urlImage;
   //  private $notifCreateur;
     private $DateArticle;
+    private $DateCreation;
+    private $ImageUrl;
+    private $Status;
 
 
 
@@ -29,14 +32,20 @@ class article
     {
         return $this->AuteurArticle;
     }
+    public function getImageUrl()
+    {
+        return $this->ImageUrl;
+    }
+    public function getStatus()
+    {
+        return $this->Status;
+    }
+
 /*    public function getSource()
     {
         return $this->source;
     }
-    public function getUrlImage()
-    {
-        return $this->urlImage;
-    }
+    
     public function getNotifCreateur()
     {
         return $this->notifCreateur;
@@ -44,6 +53,10 @@ class article
     public function getDatearticle()
     {
         return $this->DateArticle;
+    }
+    public function getDateCreation()
+    {
+        return $this->DateCreation;
     }
 
     public function setTitre($TitreArticle)
@@ -58,14 +71,19 @@ class article
     {
         $this->AuteurArticle = $AuteurArticle;
     }
+    public function setImageUrl($ImageUrl)
+    {
+        $this->ImageUrl = $ImageUrl;
+    } 
+    public function setStatus($Status)
+    {
+        $this->Status = $Status;
+    } 
   /*  public function setSource($source)
     {
         $this->source = $source;
     }
-    public function setUrlImage($urlImage)
-    {
-        $this->urlImage = $urlImage;
-    } 
+    
     public function setNotifCreateur($notifCreateur)
     {
         $this->notifCreateur = $notifCreateur;
@@ -74,8 +92,12 @@ class article
     {
         $this->DateArticle = $DateArticle;
     }
+    public function setDateCreation($DateCreation)
+    {
+        $this->DateCreation = $DateCreation;
+    }
 
-    public function __construct($TitreArticle, $DescriptionArticle, $AuteurArticle, $DateArticle)
+    public function __construct($TitreArticle, $DescriptionArticle, $AuteurArticle, $DateArticle, $DateCreation, $ImageUrl, $Status)
     {
         $this->TitreArticle = $TitreArticle;
         $this->DescriptionArticle = $DescriptionArticle;
@@ -84,5 +106,9 @@ class article
         $this->urlImage = $urlImage; 
         $this->notifCreateur = $notifCreateur;*/
         $this->DateArticle = $DateArticle;
+        $this->DateCreation = $DateCreation;
+        $this->ImageUrl = $ImageUrl;
+        $this->Status = $Status;
+
     }
 }
