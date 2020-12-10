@@ -125,7 +125,7 @@ if(isset($_POST['Submit']))
 
 <tr>
 	<td><label for="comment">Description</label>
-		<textarea type="text" name="Description" cols="80" row="150"></textarea> </td>
+		<textarea type="text" name="Description"></textarea> </td>
 	
 </tr>
 

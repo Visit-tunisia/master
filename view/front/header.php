@@ -43,6 +43,7 @@
 							<li><a href="index.php">Home</a></li>
 							<li><a href="landing.php">Landing</a></li>
 							<li><a href="generic.php">Generic</a></li>
+							<li><a href="blog.php">Blog</a></li>
 							<li><a href="elements.php">Elements</a></li>
 						</ul>
 						<ul class="actions stacked">
