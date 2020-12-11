@@ -29,14 +29,9 @@ if (isset($_POST['dateEv'])) {
 if ($dateEv == null){
      echo ("prenom est vide!!!!!!");
 }
-if (isset($_POST['idL'])) {
-  $idL = $_POST['idL'];
-  echo $idL;
-}
-if ($idL == null){
-  echo ("idL est vide!!!!!!");
-}
 
+  $idL = $_POST['idL'];
+ 
 if (isset($_POST['nbpEv'])) {
   $nbpEv=$_POST['nbpEv'];
   echo $nbpEv;
@@ -67,8 +62,11 @@ if ($discripEv == null){
 }
 
 
-$req="INSERT INTO `evenement` (`nomEv`,`dateEv`,`idL`,`nbpEv`,`pdiscripEv`,`imageEv`,`discripEv`) values ('".$nomEv."','".$dateEv."','".$idL."','".$nbpEv."','".$pdiscripEv."','".$imageEv."','".$discripEv."'); ";
-$conn->query($req);
+// $req="INSERT INTO `evenement` (`nomEv`,`dateEv`,`idL`,`nbpEv`,`pdiscripEv`,`imageEv`,`discripEv`) values ('".$nomEv."','".$dateEv."','".$idL."','".$nbpEv."','".$pdiscripEv."','".$imageEv."','".$discripEv."'); ";
+// $conn->query($req);
+$req=" INSERT INTO evenement (nomEv,dateEv,idL,nbpEv,pdiscripEv,imageEv,discripEv) values (?,?,?,?,?,?,?) ";
+$stmt= $conn->prepare($req);
+$stmt->execute([$nomEv, $dateEv, $idL, $nbpEv,$pdiscripEv,$imageEv,$discripEv]);
 
 header('Location: http://localhost/project/master/view/temp/generic.php');
 exit();

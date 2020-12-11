@@ -68,17 +68,27 @@
 												$req=" SELECT * from evenement ; ";
 												foreach ($conn->query($req) as $res)
 												{
+													
+													$res1=$conn->prepare(" SELECT emplacementL from evenement e, lieuevenement l where e.idL=l.idL ; ");
+													$res1->execute();
+													$row = $res1->fetch(PDO::FETCH_ASSOC);
 													echo('
 																<div class="card" style="width: 90%;">
 																<img src="assets/img/cap-serrat-negro-201z.jpg" class="card-img-top" alt="...">
 																<div class="card-body">
-																<h5 class="card-title">'.$res["nomEv"].'</h5>
-																<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-																<button class="btn btn-primary" style="border=0;">Go somewhere</button>
-																<a href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='.$res["idEv"].'" class="btn btn-primary">Modifier un évènement</a>
+																<p class="card-title" style="display:inline;">'.$res["nomEv"].'</p>
+																<p class="card-text"  style=" margin-left:80%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">	<path fill-rule="evenodd" d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>	<path fill-rule="evenodd" d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>' .$res["dateEv"].'</p>
+																<p class="card-text" style=" margin-left:85%; margin-top:-20px"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/><path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>'.$row['emplacementL'].'</p>
+																<center>
+																<p class="card-text">'.$res["pdiscripEv"].'</p>
+																</center>
+																<center>
+																<button class="btn btncard" style="margin-top:25px;"><a href="http://localhost/project/master/view/temp/evenement.php?id='.$res["idEv"].'">Lire la suite</a></button> </br>
+																<button  class="btn btncard" ><a href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='.$res["idEv"].'" >Modifier</a></button> 
 																<form action="delete.php" method="post">
 																<input type="hidden" value="'.$res["idEv"].'"  name="idEv" />
-																<button class="btn btn-primary" style="margin-top=2px;">Supprimer</button>
+																<button class="btn btncard" style="margin-top=2px;"><a>Supprimer</a></button>
+																</center>
 																</form>
 																</div>
 															</div>
@@ -91,7 +101,7 @@
 									</div>
 									<div class="card" >
 									<div class="card-body">
-									<a href="http://localhost/project/master/view/temp/ajout_ev/inscription.html" class="btn btn-primary">Ajouter un évènement</a>
+								    <center>	<button class="btn btncard"><a href="http://localhost/project/master/view/temp/ajout_ev/ajout.php" >Ajouter un évènement</a></button> </center>
 									</div>
 									</div>
 								</div>
