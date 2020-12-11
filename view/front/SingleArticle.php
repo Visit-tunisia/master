@@ -1,9 +1,15 @@
 <?php
 include '../../Controller/ContrArticle.php';
 include_once '../../Model/Articles.php';
+include '../../Controller/ContrCommentaire.php';
+include_once '../../Model/Commentaire.php';
 
 $articleC = new articleC();
 $error = "";
+
+$Commentairee= new CommentaireC();
+$liste=$Commentairee->afficherCommentairesarticle($_GET['IdArticle']);
+
 
                 if (isset($_GET['IdArticle'])) {
                     $article = $articleC->recupererarticle($_GET['IdArticle']);
@@ -11,6 +17,50 @@ $error = "";
 
 ?>
 
+<?php
+
+if(isset($_POST['Submit']))
+{
+	
+
+
+
+	 $CommentC = new CommentaireC($_POST['CommentaireText'],$_GET['IdArticle']);
+	// echo $datetime;
+	 //echo $datetimeC;
+
+	 
+
+    /*$articlec->Auteur= $_POST['Auteur'];
+	$articlec->date= $_POST['date'];
+	$articlec->Desc= $_POST['Description'];
+	$articlec->titre= $_POST['titre']; */
+
+
+	 $Commentairee->ajouterCommentaire($_POST['CommentaireText'],$_GET['IdArticle']);
+
+
+
+	 /*
+
+	$result = $conn->query($sql);
+	if($result == TRUE)
+	{
+		echo "new row created";
+	}
+	else
+	{
+		echo "error" . "<br>" .$conn->error;
+
+	}
+	$conn->close();
+} */
+header("location: SingleArticle.php?IdArticle=".$_GET['IdArticle']);
+
+}
+
+
+?>
 <!DOCTYPE HTML>
 <!--
 	Forty by HTML5 UP
@@ -63,13 +113,45 @@ $error = "";
 													
 				</div>
 			</section>
+
+<div class="inner" style="width: 50%; margin-left: 10%;">
+
+<form method="post" action="">
+									<div class="fields">
+									
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="CommentaireText" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<button class="btn btn-primary" type="Submit"  name="Submit" >submit</button>
+									
+								</form>
+</div>
+
+
+<?php   
+								foreach ($liste as $pr)
+                    			{
+                    ?>
+
+	<dt><?php ?></dt>
+		<dd>
+			<div style="border: 5px; margin-left: 20%;">
+			<p style="border:3px; border-style:solid; border-color:black; padding: 1em; width:60%;"><?php echo $pr->texte; ?>
+			</div>
+				
+			</p>
+		</dd>
+
 <?php
+}
 }
 ?>
 				<!-- Contact -->
 					<section id="contact">
 						<div class="inner">
-							<section>
+							<!--<section>
 								<form method="post" action="#">
 									<div class="fields">
 										<div class="field half">
@@ -90,7 +172,7 @@ $error = "";
 										<li><input type="reset" value="Clear" /></li>
 									</ul>
 								</form>
-							</section>
+							</section> -->
 							<section class="split">
 								<section>
 									<div class="contact-method">

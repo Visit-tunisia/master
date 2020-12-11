@@ -46,6 +46,20 @@ $liste=$articlee->AfficherArticle();
     <a href="ajouterArtic.php" class="btn btn-info">Ajouter un article</a>
    
 
+   <?php
+   if(isset($_POST['Searchh']))
+   {
+    echo "HELOOOO";
+        $liste=$articlee->chercherArticleAuteur($_POST['queryy']);
+    
+
+   }
+
+   ?>
+                            <form  method="POST">
+        <input type="text" name="queryy" />
+        <input type="submit" value="Search" name="Searchh" />
+    </form>
 
 
         <table class="table">

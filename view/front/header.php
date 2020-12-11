@@ -21,7 +21,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<a href="index.php" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
+						<a href="index.php" class="logo"><img src="images/Asset3.png" style="width: 25%;"><strong></strong> <span></span></a>
 						<nav>
 							<a href="#menu">Menu</a>
 							<a>

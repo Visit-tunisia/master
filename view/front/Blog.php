@@ -39,10 +39,10 @@ $liste=$articlee->AfficherArticle();
 
 				<!-- Banner -->
 				<!-- Note: The "styleN" class below should match that of the header element. -->
-					<section id="banner" class="style2">
+					<section id="banner" class="style6">
 						<div class="inner">
 							<span class="image">
-								<img src="images/pic07.jpg" alt="" />
+								<img src="images/banner.jpg" alt="" />
 							</span>
 							<header class="major">
 								<h1>Blog</h1>
@@ -121,6 +121,8 @@ $liste=$articlee->AfficherArticle();
 								<?php   
 								foreach ($liste as $pr)
                     {
+                    	if($pr['Status']='PUBLIE')
+                    	{
 
 
 						?>
@@ -147,7 +149,8 @@ $liste=$articlee->AfficherArticle();
 									</div>
 								</section>
 						<?php
-						}   
+						} 
+						}  
 						?>
 
 							<!--	<section>
