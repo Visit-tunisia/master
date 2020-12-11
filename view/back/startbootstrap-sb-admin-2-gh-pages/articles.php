@@ -42,7 +42,26 @@ $liste=$articlee->AfficherArticle();
  ?>
  <div id="container">
          <h2>Articles</h2>
+         
     <a href="ajouterArtic.php" class="btn btn-info">Ajouter un article</a>
+   
+
+   <?php
+   if(isset($_POST['Searchh']))
+   {
+    echo "HELOOOO";
+        $liste=$articlee->chercherArticleAuteur($_POST['queryy']);
+    
+
+   }
+
+   ?>
+                            <form  method="POST">
+        <input type="text" name="queryy" />
+        <input type="submit" value="Search" name="Searchh" />
+    </form>
+
+
         <table class="table">
             <thead>
                 <tr>
@@ -54,6 +73,50 @@ $liste=$articlee->AfficherArticle();
                     <th>Image Url</th>
                     <th>Description</th>
                     <th>Status</th>
+                    <th>
+ <div class="dropdown">
+<?php
+
+ if(isset($_POST['button1'])) {
+            $liste=$articlee->sortdate1();  
+        }
+         if(isset($_POST['button2'])) {
+            $liste=$articlee->sortdate2();  
+        }
+         if(isset($_POST['button3'])) {
+            $liste=$articlee->sortdate3();  
+        }
+         if(isset($_POST['button4'])) {
+            $liste=$articlee->sortdate4();  
+        }
+
+         
+
+  ?>
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort by
+  </button>
+  <form method="POST">
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+     <input class="dropdown-item" type="submit" name="button1" value="Date de publication descendant" />
+    <input class="dropdown-item" type="submit" name="button2" value="Date de publication ascendant" />
+   <input class="dropdown-item" type="submit" name="button3" value="Date de creation/modification descendant" /></button>
+    <input class="dropdown-item" type="submit" name="button4" value="Date de creation/modification ascendant" />
+
+ <!--   <a class="dropdown-item" name="button1" type="submit" href="">Date de publication descendant</a>
+    <a class="dropdown-item" href="#">Date de publication ascendant</a>
+    <a class="dropdown-item" href="#">Date de creation/modification ascendant</a>
+    <a class="dropdown-item" href="#">Date de creation/modification ascendant</a> -->
+  </div>
+</form>
+
+</div>
+
+
+                    </th>
+
+
 
                 </tr>
             </thead>
@@ -72,8 +135,15 @@ $liste=$articlee->AfficherArticle();
                 <td><?php echo $pr['DateArticle']; ?></td>
                 <td><?php echo $pr['DateCreation']; ?></td>
                 <td><?php echo $pr['TitreArticle']; ?></td>
-                <td><?php echo $pr['ImageUrl']; ?></td>
-                <td><?php echo $pr['DescriptionArticle']; ?></td>
+                <td style="white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;"><?php echo $pr['ImageUrl']; ?></td>
+                <td style="display: block;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;"><?php echo $pr['DescriptionArticle']; ?></td>
                 <td><?php echo $pr['Status']; ?></td>
                 <td><a class="btn btn-success" href="ModifierArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Update</a></td>
                 <td><a class="btn btn-danger"href="../../../Controller/SupprimerArtic.php?IdArticle=<?php echo $pr['IdArticle']; ?>">Delete</a></td>

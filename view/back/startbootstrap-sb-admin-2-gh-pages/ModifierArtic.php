@@ -60,9 +60,9 @@ if (
        // echo $article['DateArticle'];
 		//$timeN = date('H:i:s', strtotime($_POST['DateArticle']));
 		//echo $timeN;
-		echo "aaaaaaaaaa4";
+	
         $articleC->modifierarticle($article, $_GET['IdArticle']);
-        echo "aaaaaaaaaa5";
+     
     //    header('Location:../front/blogs.php');
     } else
         echo "Missing information";
@@ -166,7 +166,7 @@ if (
                                     <input name="TimeArticleC" type="time" value="<?php $timeC = date('H:i'); echo $timeC;  ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                <label>Image Url</label>
+                                <label for="Imageuurl">Image Url</label>
 										<input type="text" name="ImageUrl" value="<?php echo $article['ImageUrl'];?>">
 								</div>
 								
