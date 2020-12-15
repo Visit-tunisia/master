@@ -8,7 +8,7 @@
     <body>
         <div class="login-page">
         <div class="form">
-        <form  method="POST" action="ajoutphp.php">
+        <form  method="POST" action="ajoutphp.php"  enctype="multipart/form-data">
             <input type="text" placeholder="nomEv" name="nomEv" class="form-control"/>
             <input type="date" placeholder="dateEv" name="dateEv" class="form-control"/>
             <?php 
@@ -39,7 +39,8 @@
             </select>
             <input type="number" placeholder="nbpEv" name="nbpEv" class="form-control"/>
             <input type="text" placeholder="pdiscripEv" name="pdiscripEv" class="form-control"/>
-            <input type="text" placeholder="imageEv" name="imageEv" class="form-control"/>
+            <input type="file" name="image" id="image">
+            <!-- <input type="text" placeholder="imageEv" name="imageEv" class="form-control"/> -->
             <input type="text" placeholder="discripEv" name="discripEv" class="form-control"/>
 
             <button>Ajouter</button>

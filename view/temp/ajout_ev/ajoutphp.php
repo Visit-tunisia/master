@@ -46,13 +46,13 @@ if (isset($_POST['pdiscripEv'])) {
 if ($pdiscripEv == null){
    echo ("pdiscripEv est vide!!!!!!");
 }
-if (isset($_POST['imageEv'])) {
-  $imageEv=$_POST['imageEv'];
-  echo $imageEv;
-}
-if ($imageEv == null){
-   echo ("imageEv est vide!!!!!!");
-}
+// if (isset($_POST['imageEv'])) {
+//   $imageEv=$_POST['imageEv'];
+//   echo $imageEv;
+// }
+// if ($imageEv == null){
+//    echo ("imageEv est vide!!!!!!");
+// }
 if (isset($_POST['discripEv'])) {
   $discripEv=$_POST['discripEv'];
   echo $discripEv;
@@ -60,15 +60,46 @@ if (isset($_POST['discripEv'])) {
 if ($discripEv == null){
    echo ("discripEv est vide!!!!!!");
 }
+$folder = "C:/wamp64/www/project/master/view/temp/img_dir/ ";
+
+$image = $_FILES['image']['name']; 
+
+$path = $folder.$image ; 
+
+$target_file=$folder.basename($_FILES["image"]["name"]);
+
+
+$imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
+
+
+$allowed=array('jpeg','png' ,'jpg'); $filename=$_FILES['image']['name']; 
+
+$ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
+
+{ 
+
+ echo "Sorry, only JPG, JPEG, PNG & GIF  files are allowed.";
+
+}
+
+else{ 
+
+
+
+
+
+
 
 
 // $req="INSERT INTO `evenement` (`nomEv`,`dateEv`,`idL`,`nbpEv`,`pdiscripEv`,`imageEv`,`discripEv`) values ('".$nomEv."','".$dateEv."','".$idL."','".$nbpEv."','".$pdiscripEv."','".$imageEv."','".$discripEv."'); ";
 // $conn->query($req);
 $req=" INSERT INTO evenement (nomEv,dateEv,idL,nbpEv,pdiscripEv,imageEv,discripEv) values (?,?,?,?,?,?,?) ";
 $stmt= $conn->prepare($req);
-$stmt->execute([$nomEv, $dateEv, $idL, $nbpEv,$pdiscripEv,$imageEv,$discripEv]);
+$stmt->execute([$nomEv, $dateEv, $idL, $nbpEv,$pdiscripEv,$image,$discripEv]);
+move_uploaded_file( $_FILES['image']['tmp_name'], $path); 
 
 header('Location: http://localhost/project/master/view/temp/generic.php');
 exit();
+} 
 
 ?>
