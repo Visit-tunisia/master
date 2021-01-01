@@ -2,8 +2,18 @@
 include '../../Controller/ContrArticle.php';
 include_once '../../Model/Articles.php';
 
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$perpage = isset($GET['per-page'])&& $_GET['per-page']<= 50 ? (int)$_GET['per-page'] : 2;
+
+
 $articlee= new articleC();
-$liste=$articlee->AfficherArticle();
+$liste=$articlee->AfficherArticlePaginer($page,$perpage);
+
+
+$totalP=$articlee->calcTotalRows($perpage);
+
+
 
 
 ?>
@@ -153,6 +163,63 @@ $liste=$articlee->AfficherArticle();
 						}  
 						?>
 
+
+
+
+
+
+							
+  <ul class="pagination justify-content-center">
+    <?php
+    if($page==1)
+    {
+    ?>
+    <li class="page-item disabled">
+    	<a class="button small disabled" href="?page=<?php echo $page-1; ?>&per-page=<?php echo $perpage; ?>" tabindex="-1">Previous</a>
+    <?php
+    }
+    else
+    {
+    ?>
+    <li class="page-item">
+    	<a class="button small" href="?page=<?php echo $page-1; ?>&per-page=<?php echo $perpage; ?>" tabindex="-1">Previous</a>
+        <?php
+            }
+        ?>
+      
+    </li>
+        <?php
+                    
+               // }
+                    for($x=1;$x<=$totalP;$x++):
+
+                ?>
+
+            <li class="page-item"><a class="page" href="?page=<?php echo $x; ?>&per-page=<?php echo $perpage; ?>"><?php echo $x; ?></a></li>
+
+                <?php endfor; ?>
+     <?php
+    if($page==$totalP)
+    {
+    ?>
+    <li class="page-item disabled">
+    	<a class="button small disabled" href="?page=<?php echo $page+1; ?>&per-page=<?php echo $perpage; ?>">Next</a>
+    <?php
+    }
+    else
+    {
+    ?>
+    <li class="page-item">
+    	<a class="button small" href="?page=<?php echo $page+1; ?>&per-page=<?php echo $perpage; ?>">Next</a>
+        <?php
+            }
+        ?>
+      
+    </li>
+  </ul>
+
+
+
 							<!--	<section>
 									<a href="generic.html" class="image">
 										<img src="images/pic09.jpg" alt="" data-position="top center" />
@@ -201,7 +268,11 @@ $liste=$articlee->AfficherArticle();
 							</section>
 
 					</div>
+<?php
+include'NewsLetterPage.php';
 
+
+?>
 				<!-- Contact -->
 					<section id="contact">
 						<div class="inner">
