@@ -2,9 +2,19 @@
 include '../../../Controller/ContrArticle.php';
 include_once '../../../Model/Articles.php';
 
-$articlee= new articleC();
-$liste=$articlee->AfficherArticle();
 
+
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$perpage = isset($GET['per-page'])&& $_GET['per-page']<= 50 ? (int)$_GET['per-page'] : 2;
+
+
+$articlee= new articleC();
+
+$liste=$articlee->AfficherArticlePaginer($page,$perpage);
+$totalP=$articlee->calcTotalRows($perpage);
+
+//echo $totalP;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,10 +59,8 @@ $liste=$articlee->AfficherArticle();
    <?php
    if(isset($_POST['Searchh']))
    {
-    echo "HELOOOO";
-        $liste=$articlee->chercherArticleAuteur($_POST['queryy']);
     
-
+        $liste=$articlee->chercherArticleAuteur($_POST['queryy']);
    }
 
    ?>
@@ -89,9 +97,7 @@ $liste=$articlee->AfficherArticle();
          if(isset($_POST['button4'])) {
             $liste=$articlee->sortdate4();  
         }
-
-         
-
+ 
   ?>
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Sort by
@@ -127,8 +133,8 @@ $liste=$articlee->AfficherArticle();
             // echo $date;
               /*  if($result->num_rows>0)
                 { */
-                    foreach ($liste as $pr)
-                    {  ?>
+                    foreach ($liste as $pr):
+                      ?>
                         <tr>
                         <td><?php echo $pr['IdArticle']; ?></td>
                 <td><?php echo $pr['AuteurArticle']; ?></td>
@@ -138,7 +144,7 @@ $liste=$articlee->AfficherArticle();
                 <td style="white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100px;"><?php echo $pr['ImageUrl']; ?></td>
+  max-width: 100px;"><img style="width: 200%;" src="<?php echo $pr['ImageUrl']; ?>"></td>
                 <td style="display: block;
   width: 100px;
   overflow: hidden;
@@ -150,19 +156,67 @@ $liste=$articlee->AfficherArticle();
             </tr>
 
 <?php
-                    }
+                    endforeach;
                // }
+                    
 
                 ?>
-                
 
 
             </tbody>
-
-
-
-
         </table>
+
+  
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <?php
+    if($page==1)
+    {
+    ?>
+    <li class="page-item disabled">
+    <?php
+    }
+    else
+    {
+    ?>
+    <li class="page-item">
+        <?php
+            }
+        ?>
+      <a class="page-link" href="?page=<?php echo $page-1; ?>&per-page=<?php echo $perpage; ?>" tabindex="-1">Previous</a>
+    </li>
+        <?php
+                    
+               // }
+                    for($x=1;$x<=$totalP;$x++):
+
+                ?>
+
+            <li class="page-item"><a class="page-link" href="?page=<?php echo $x; ?>&per-page=<?php echo $perpage; ?>"><?php echo $x; ?></a></li>
+
+                <?php endfor; ?>
+     <?php
+    if($page==$totalP)
+    {
+    ?>
+    <li class="page-item disabled">
+    <?php
+    }
+    else
+    {
+    ?>
+    <li class="page-item">
+        <?php
+            }
+        ?>
+      <a class="page-link" href="?page=<?php echo $page+1; ?>&per-page=<?php echo $perpage; ?>">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
 </div>
 </div>
 </body>

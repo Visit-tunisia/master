@@ -135,19 +135,22 @@ header("location: SingleArticle.php?IdArticle=".$_GET['IdArticle']);
                     			{
                     ?>
 
-	<dt><?php ?></dt>
-		<dd>
-			<div style="border: 5px; margin-left: 20%;">
-			<p style="border:3px; border-style:solid; border-color:black; padding: 1em; width:60%;"><?php echo $pr->texte; ?>
+	<?php ?> <div style="border: 5px; margin-left: 20%; margin-right: 20%;" class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">Commenter Name</h5>
+			<p><?php echo $pr->texte; ?>
 			</div>
 				
 			</p>
-		</dd>
+		</div>
+	</div>
+
 
 <?php
 }
 }
-?>
+?>   
 				<!-- Contact -->
 					<section id="contact">
 						<div class="inner">
