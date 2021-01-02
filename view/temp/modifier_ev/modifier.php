@@ -77,7 +77,7 @@ $req="UPDATE `evenement` set nomEv=?,dateEv=?,idL=?,nbpEv=?,pdiscripEv=?,imageEv
 
 $stmt= $conn->prepare($req);
 $stmt->execute([$nomEv, $dateEv, $idL, $nbpEv,$pdiscripEv,$imageEv,$discripEv]);
-header('Location: http://localhost/project/master/view/temp/generic.php');
+header('Location: http://localhost/project/master/view/back/startbootstrap-sb-admin-2-gh-pages/Event.php');
 exit();
 
 ?>

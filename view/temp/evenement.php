@@ -20,8 +20,8 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header" class="header" style="color: black;">
+			<header 
+					id="header" class="header" style="color: black;">
 						<img src="assets/img/logo.png" width="10%" class="logo">
 						<!-- <a href="index.html" class="logo"><strong>Forty</strong></a> -->
 						<nav>
@@ -39,7 +39,14 @@
 						</ul>
 						<ul class="actions stacked">
 							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
+							<?php
+								if(isset($_SESSION['role'])){
+									echo('<li><a href="http://localhost/project/master/view/login_projet/deconnexion.php" class="button fit">Log Out</a></li>');
+								}else{
+									echo('<li><a href="http://localhost/project/master/view/login_projet/login.php" class="button fit">Log In</a></li>');
+								}
+							?>
+							
 						</ul>
 					</nav>
 
@@ -87,7 +94,7 @@
 							<?php echo $row["discripEv"]; ?>
 							</div>
 									</div>
-								<center><button class="btncard" style="margin-bottom: 20px;">Participer</button></center>
+								<center><button class="btncard" style="margin-bottom: 20px;" id="participer">Participer</button></center>
 								
 							   <center><button    class="btncard"  onClick="window.print()">							   <svg  width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-printer" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11 2H5a1 1 0 0 0-1 1v2H3V3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h-1V3a1 1 0 0 0-1-1zm3 4H2a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v1H2a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1z"/><path fill-rule="evenodd" d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM5 8a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H5z"/><path d="M3 7.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/></svg>
                        Imprimer</button></center>
@@ -175,6 +182,33 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+<script>
 
+$("#participer").click(function(){
+	let ch = window.location.href;
+	ch=ch.substring(ch.indexOf('id')+3,ch.length);
+	console.log(ch);
+	$.ajax({
+        url : 'reservation.php',
+        data : 'idEv=' + ch,
+        type : 'GET',
+        dataType : 'json', // On désire recevoir du HTML
+        success : function(data){ // code_html contient le HTML renvoyé
+        console.log('jawek zok');
+		
+        },
+		error : function(data){
+			console.log('laaaaaaaaasba');
+		}
+
+     }); 
+	
+})
+
+</script>
 </body>
 </html>

@@ -32,12 +32,25 @@ try {
   } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
   }
-  $req=" SELECT login_name,mot_de_passe from utilisateur where login_name='".$login."' and mot_de_passe='".$pwd."'; ";
+  $req=" SELECT idUtili,login_name,mot_de_passe,role from utilisateur where login_name='".$login."' and mot_de_passe='".$pwd."'; ";
   $res=$conn->query($req);
   $row = $res->setFetchMode(PDO::FETCH_ASSOC);
    if($res-> rowcount())
   {
-  header('Location: http://localhost/project/master/view/front/');
+    session_start();
+    
+    foreach($res as $row){
+      $_SESSION['role']=$row['role'];
+      $_SESSION['idUtili'] = $row['idUtili'];
+      if( $row['role']=='admin'){
+        header('Location: http://localhost/project/master/view/back/startbootstrap-sb-admin-2-gh-pages/Event.php');
+      }else{
+        header('Location: http://localhost/project/master/view/temp/generic.php');
+      }
+    }
+   
+
+  
   exit();
   }
   else
