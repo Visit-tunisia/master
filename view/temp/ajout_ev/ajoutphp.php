@@ -60,8 +60,7 @@ if (isset($_POST['discripEv'])) {
 if ($discripEv == null){
    echo ("discripEv est vide!!!!!!");
 }
-$folder = "C:\wamp64\www\project\master\view\temp\img_dir";
-
+$folder = "..\img_dir\\";
 $image = $_FILES['image']['name']; 
 
 $path = $folder.$image ; 
@@ -72,10 +71,10 @@ $target_file=$folder.basename($_FILES["image"]["name"]);
 $imageFileType=pathinfo($target_file,PATHINFO_EXTENSION);
 
 
-$allowed=array('jpeg','png' ,'jpg'); $filename=$_FILES['image']['name']; 
+$allowed=array('jpeg','png' ,'jpg','JPEG','PNG','JPG'); $filename=$_FILES['image']['name']; 
 
-$ext=pathinfo($filename, PATHINFO_EXTENSION); if(!in_array($ext,$allowed) ) 
-
+$ext=pathinfo($filename, PATHINFO_EXTENSION); 
+if(!in_array($ext,$allowed) ) 
 { 
 
  echo "Sorry, only JPG, JPEG, PNG & GIF  files are allowed.";
@@ -86,8 +85,8 @@ else{
 
 
 
-
-  move_uploaded_file( $_FILES['file']['tmp_name'], "C:\wamp64\www\project\master\view\temp\img_dir"); 
+  echo"khraaaaa";
+  move_uploaded_file( $_FILES['image']['tmp_name'], $path); 
 
 
 

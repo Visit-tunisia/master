@@ -58,7 +58,7 @@
 									<header class="major">
 										<h1>Évènements</h1>
 									</header>
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+									<span class="image main"> <img src="http://localhost/project/master/view/temp/assets/img/e.jpg" alt="" /> </span>
 									<input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
 									<div id="myItems">
 
@@ -106,8 +106,8 @@ while($res = $r->fetch(PDO::FETCH_ASSOC)):
 													$res1->execute();
 													$row = $res1->fetch(PDO::FETCH_ASSOC);
 	?>
-	<div class="card" style="width: 90%;">
-	<img src="img_dir/<?php echo $res["imageEv"]; ?>" >
+	<div class="card" style="width: 600px;">
+	<img src="img_dir/<?php echo $res["imageEv"]; ?>"style="max-width:600px;max-height:300px;" >
 	<?php
 	
 	echo('

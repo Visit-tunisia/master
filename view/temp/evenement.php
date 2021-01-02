@@ -89,7 +89,7 @@
 							<header class="major">
 								<h1><?php echo $row["nomEv"]; ?></h1>
 							</header>
-							<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
+							<span class="image main"><img src="img_dir/<?php echo $row["imageEv"]; ?>" alt="" style="max-width:1200px;max-height:600px;"  /></span>
 							<div style="width: 70%;">
 							<?php echo $row["discripEv"]; ?>
 							</div>
