@@ -69,7 +69,7 @@ class compteC
                         
                          password = :password,
                          mail = :mail
-                       
+                      
                         
 					WHERE idUtili = :idUtili'
             );
@@ -82,6 +82,8 @@ class compteC
                 'datedenaissance'=> $compte->getdatedenaissance(),
                 'password'=> $compte->getpassword(),
                 'mail'=> $compte->getmail(),
+                
+
                 'idUtili' => $idUtili
             ]);
             echo $query->rowCount() . " records UPDATED successfully <br>";
