@@ -60,7 +60,7 @@ if (isset($_POST['discripEv'])) {
 if ($discripEv == null){
    echo ("discripEv est vide!!!!!!");
 }
-$folder = "C:/wamp64/www/project/master/view/temp/img_dir/ ";
+$folder = "C:\wamp64\www\project\master\view\temp\img_dir";
 
 $image = $_FILES['image']['name']; 
 
@@ -87,6 +87,7 @@ else{
 
 
 
+  move_uploaded_file( $_FILES['file']['tmp_name'], "C:\wamp64\www\project\master\view\temp\img_dir"); 
 
 
 
@@ -96,9 +97,8 @@ else{
 $req=" INSERT INTO evenement (nomEv,dateEv,idL,nbpEv,pdiscripEv,imageEv,discripEv) values (?,?,?,?,?,?,?) ";
 $stmt= $conn->prepare($req);
 $stmt->execute([$nomEv, $dateEv, $idL, $nbpEv,$pdiscripEv,$image,$discripEv]);
-move_uploaded_file( $_FILES['image']['tmp_name'], $path); 
 
-header('Location: http://localhost/project/master/view/temp/generic.php');
+header('Location: http://localhost/project/master/view/back/startbootstrap-sb-admin-2-gh-pages/Event.php');
 exit();
 } 
 

@@ -19,7 +19,8 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header" class="header" style="color: black;">
+					<header 
+					id="header" class="header" style="color: black;">
 						<img src="assets/img/logo.png" width="10%" class="logo">
 						<!-- <a href="index.html" class="logo"><strong>Forty</strong></a> -->
 						<nav>
@@ -37,7 +38,14 @@
 						</ul>
 						<ul class="actions stacked">
 							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
+							<?php
+								if(isset($_SESSION['role'])){
+									echo('<li><a href="http://localhost/project/master/view/login_projet/deconnexion.php" class="button fit">Log Out</a></li>');
+								}else{
+									echo('<li><a href="http://localhost/project/master/view/login_projet/login.php" class="button fit">Log In</a></li>');
+								}
+							?>
+							
 						</ul>
 					</nav>
 
@@ -72,7 +80,7 @@
 												}
 
 												
-$limit = 4;
+$limit = 10;
 $query = "SELECT count(*) FROM evenement";
 
 $s = $conn->query($query);
@@ -99,7 +107,7 @@ while($res = $r->fetch(PDO::FETCH_ASSOC)):
 													$row = $res1->fetch(PDO::FETCH_ASSOC);
 	?>
 	<div class="card" style="width: 90%;">
-	<img src="<?php echo $res["imageEv"]; ?>" >
+	<img src="img_dir/<?php echo $res["imageEv"]; ?>" >
 	<?php
 	
 	echo('
@@ -112,10 +120,10 @@ while($res = $r->fetch(PDO::FETCH_ASSOC)):
 	</center>
 	<center>
 	<button class="btn btncard" style="margin-top:25px;"><a href="http://localhost/project/master/view/temp/evenement.php?id='.$res["idEv"].'">Lire la suite</a></button> </br>
-	<button  class="btn btncard" ><a href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='.$res["idEv"].'" >Modifier</a></button> 
+	<!--<button  class="btn btncard" ><a href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='.$res["idEv"].'" >Modifier</a></button> -->
 	<form action="delete.php" method="post">
 	<input type="hidden" value="'.$res["idEv"].'"  name="idEv" />
-	<button class="btn btncard" style="margin-top=2px;"><a>Supprimer</a></button>
+	 <!--<button class="btn btncard" style="margin-top=2px;"><a>Supprimer</a></button>-->
 	</center>
 	</form>
 	</div>
@@ -124,27 +132,27 @@ while($res = $r->fetch(PDO::FETCH_ASSOC)):
 <?php
 endwhile;
 
-
-for ($page=1; $page <= $total_pages ; $page++):?>
-
-<a href='<?php echo "?page=$page"; ?>' class="links"><?php  echo $page; ?>
- </a>
-
-<?php endfor; 
-
-												
-
-												?>
+?>
 										
 										</div>
 									</div>
-									<div class="card" >
+									<!--<div class="card" >
 									<div class="card-body">
 								    <center>	<button class="btn btncard"><a href="http://localhost/project/master/view/temp/ajout_ev/ajout.php" >Ajouter un évènement</a></button> </center>
 									</div>
-									</div>
+									</div>-->
+
 								</div>
 							</section>
+							<center> <?php						
+ 
+for ($page=1; $page <= $total_pages ; $page++):?>
+
+<a   href='<?php echo "?page=$page"; ?>' ><?php  echo $page; ?></a>
+
+<?php endfor; 
+
+			?>  </center>
 
 					</div>
 
