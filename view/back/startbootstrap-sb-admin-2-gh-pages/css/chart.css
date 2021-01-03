@@ -1,0 +1,9 @@
+#myChart{
+    display: none;
+    margin-top: 10%;
+    width: 1200px !important;
+    height: 600px !important;
+}
+h2{
+    margin-left: 10px;
+}

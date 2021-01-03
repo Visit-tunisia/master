@@ -1,46 +1,62 @@
 <?php
-include_once 'config.php';
-session_start();
-$login = $_POST['login'];
-$password = $_POST['password'];
-$error="";
+//connexion à la base
+$servername = "localhost";
+$username = "root";
+$password = "";
 
-$sql="SELECT * from compte where login='$login';";
-$result=mysqli_query($conn,$sql);
-if(mysqli_num_rows($result)==0) 
-{
-    $error="login invalide";
+
+
+
+if (isset($_POST['login'])) {
+    $login = $_POST['login'];
+    echo $login;
 }
-else
-{
-    $sql="SELECT password from compte where login='$login'; ";
-    $result=mysqli_query($conn,$sql);
-    $row=mysqli_fetch_assoc($result);
-    $hashed_password=$row['password'];
-    if (!  password_verify($password, $hashed_password) )
-    {
-      $error="Mot de passe invalide";
-    }
-    else
-    {
-    $sql="SELECT * from compte where login='$login' and ban=0";
-    $result=mysqli_query($conn,$sql);
-    if(mysqli_num_rows($result)==0) 
-    {
-      $error="Votre compte est suspendu";
-    }
-    else
-    {
-        $sql="SELECT nom from compte where login='$login';";
-        $nom=mysqli_query($conn,$sql);
-        $_SESSION["login"] = $login;
-        mysqli_query($conn,"update utilisateurs set loggedin=1 where login='$login';");
-        header("Location: inscription..html");
-        
-    }
-    }
+if ($login == null){
+    echo ("login est vide!!!!!!");
 }
-if ($error!='') {
-  header("Location: login.php?msg=$error");
+
+if (isset($_POST['password'])) {
+    $password=$_POST['password'];
+    echo $password;
 }
+if ($password == null){
+     echo ("password est vide!!!!!!");
+}
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=util", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+  } catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+  }
+  $req=" SELECT idUtili,login,password,role from compte where login='".$login."' and password='".$password."'; ";
+  $res=$conn->query($req);
+  $row = $res->setFetchMode(PDO::FETCH_ASSOC);
+   if($res-> rowcount())
+  {
+    session_start();
+    
+    foreach($res as $row){
+      $_SESSION['role']=$row['role'];
+      $_SESSION['idUtili'] = $row['idUtili'];
+      if( $row['role']=='admin'){
+        header('Location: http://localhost/project/master/view/back/startbootstrap-sb-admin-2-gh-pages/Event.php');
+      }else{
+        header('Location: http://localhost/project/master/view/temp/generic.php');
+      }
+    }
+   
+
+  
+  exit();
+  }
+  else
+  {
+    header('Location: http://localhost/project/master/view/login_projet/login.html');
+    exit();
+  }
+
 ?>

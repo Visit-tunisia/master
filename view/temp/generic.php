@@ -16,38 +16,26 @@
 	<body class="is-preload" id="body">
 
 		<!-- Wrapper -->
+		
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header 
-					id="header" class="header" style="color: black;">
-						<img src="assets/img/logo.png" width="10%" class="logo">
-						<!-- <a href="index.html" class="logo"><strong>Forty</strong></a> -->
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
-
+					
 				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Geric</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<?php
-								if(isset($_SESSION['role'])){
-									echo('<li><a href="http://localhost/project/master/view/login_projet/deconnexion.php" class="button fit">Log Out</a></li>');
-								}else{
-									echo('<li><a href="http://localhost/project/master/view/login_projet/login.php" class="button fit">Log In</a></li>');
-								}
-							?>
-							
-						</ul>
-					</nav>
+					
+
+
+<?php include_once('../front/header.php');?>
+					
+
+
+
+
+
+
+
+
+
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -59,8 +47,8 @@
 										<h1>Évènements</h1>
 									</header>
 									<span class="image main"> <img src="http://localhost/project/master/view/temp/assets/img/e.jpg" alt="" /> </span>
-									<input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for names..">
-									<div id="myItems">
+									<input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" style="background-color: #0c3762 ;color:white"placeholder="Search for names..">
+									<div id="myItems" style="margin-left:-8%;margin-top:5%">
 
 									<div class="grid-container">
 									
@@ -70,7 +58,7 @@
 												$username = "root";
 												$password = "";
 												try {
-													$conn = new PDO("mysql:host=$servername;dbname=projet", $username, $password);
+													$conn = new PDO("mysql:host=$servername;dbname=visit_tunisia", $username, $password);
 													// set the PDO error mode to exception
 													$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 												
@@ -96,27 +84,25 @@ if (!isset($_GET['page'])) {
 
 
 $starting_limit = ($page-1)*$limit;
-$show  = "SELECT * FROM evenement ORDER BY idEv DESC LIMIT ".$starting_limit.",".$limit."";
+$show  = "SELECT * FROM evenement where nbpEv>0 ORDER BY idEv DESC LIMIT ".$starting_limit.",".$limit."";
 
 $r = $conn->prepare($show);
 $r->execute();
 
 while($res = $r->fetch(PDO::FETCH_ASSOC)):
-	$res1=$conn->prepare(" SELECT emplacementL from evenement e, lieuevenement l where e.idL=l.idL ; ");
+	$res1=$conn->prepare(" SELECT emplacementL from  lieuevenement  where idL='".$res['idL']."' ; ");
 													$res1->execute();
 													$row = $res1->fetch(PDO::FETCH_ASSOC);
 	?>
-<<<<<<< HEAD
-	<div class="card" style="width: 90%;">
-	<img src="img_dir/<?php echo $res["imageEv"]; ?>" >
-=======
-	<div class="card" style="width: 600px;">
-	<img src="img_dir/<?php echo $res["imageEv"]; ?>"style="max-width:600px;max-height:300px;" >
->>>>>>> 93390d79e733a61acdfffa3e4033a657c8471e88
+
+
+	<div class="card" style="width: 600px;margin-left:5%;">
+	<img src="img_dir/<?php echo $res["imageEv"]; ?>"style="max-width:600px;max-height:300px" >
+
 	<?php
 	
 	echo('
-	<div class="card-body">
+	<div class="card-body" >
 	<div class="card-title" style="display:inline;">'.$res["nomEv"].'</div>
 	<p class="card-text"  style=" margin-left:80%;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">	<path fill-rule="evenodd" d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>	<path fill-rule="evenodd" d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>' .$res["dateEv"].'</p>
 	<p class="card-text" style=" margin-left:85%; margin-top:-20px"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/><path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>'.$row['emplacementL'].'</p>

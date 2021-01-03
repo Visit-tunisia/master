@@ -25,6 +25,7 @@ $liste=$evenement->afficherEvent();
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/tableauDeBoard.css" rel="stylesheet">
 
 </head>
 <body>
@@ -42,7 +43,7 @@ $liste=$evenement->afficherEvent();
  <div id="container">
          <h2>Evenements</h2>
          
-    <a href="..\..\..\view\temp\ajout_ev\ajout.php" class="btn btn-info">Ajouter un evenement</a>
+    
 
 
 
@@ -59,6 +60,7 @@ $liste=$evenement->afficherEvent();
                             <form  method="POST" >
         <input type="text" name="queryy" id="searchText" />
         <input type="button" value="Search" name="search"  id="search" />
+        <a href="..\..\..\view\temp\ajout_ev\ajout.php" class="btn btn-info" id="btn">Ajouter un evenement</a>
     </form>
 
 
@@ -69,7 +71,7 @@ $liste=$evenement->afficherEvent();
                     <th>image</th>
                     <th>Nom</th>
                     <th>Date évènement</th>
-                    <th>Date fin évènement</th>
+                    <!-- <th>Date fin évènement</th> -->
                     <th>Lieu</th>
                     <th>Nombre Participant</th>
                     <th>Petite Discription</th>
@@ -122,7 +124,7 @@ $liste=$evenement->afficherEvent();
              //   $date = date('yy-m-d h:i:s');
             // echo $date;
               /*  if($result->num_rows>0)
-                { */require_once "C:\wamp64\www\project\master\config3.php";
+                { */require_once "C:\wamp64\www\ProjWeb\master\config2.php";
                     $db = config::getConnexion();
                     foreach ($liste as $pr)
                     {  ?>
@@ -131,7 +133,7 @@ $liste=$evenement->afficherEvent();
                 <td><?php echo $pr['imageEv']; ?></td>
                 <td><?php echo $pr['nomEv']; ?></td>
                 <td><?php echo $pr['dateEv']; ?></td>
-                <td><?php echo $pr['datefinEv']; ?></td>
+                <!-- <td><?php echo $pr['datefinEv']; ?></td> -->
                 <td><?php $sql1 =" SELECT emplacementL from  lieuevenement  where idL=".$pr['idL'].";";
                         $liste1 = $db->query($sql1);
                         foreach($liste1 as $row){
@@ -182,11 +184,47 @@ document.getElementById('search').addEventListener('click',function(){
         success : function(data){ // code_html contient le HTML renvoyé
            $("tbody").empty();
            data.map(function(row){
-               $('tbody').append('<tr><td>'+row['idEv']+'</td><td>'+row['imageEv']+'</td><td>'+row['nomEv']+'</td><td>'+row['dateEv']+'</td><td>'+row['datefinEv']+'</td><td>'+row['emplacement']+'</td><td>'+row['nbpEv']+'</td><td>'+row['pdiscripEv']+'</td><td>'+row['discripEv']+'</td> <td><a class="btn btn-success" href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='+row["idEv"]+'>Update</a></td><td> <form action="delete.php" method="POST"><input type="hidden" value="<?php echo $pr['idEv']; ?> " name="idEv" /> <button class="btn btn-danger" ><a>Supprimer</a></button></form></td> </tr>')
+               console.log("dkhal")
+               $('tbody').append('<tr><td>'+row['idEv']+'</td><td>'+row['imageEv']+'</td><td>'+row['nomEv']+'</td><td>'+row['dateEv']+'</td><td>'+row['datefinEv']+'</td><td>'+row['emplacement']+'</td><td>'+row['nbpEv']+'</td><td>'+row['pdiscripEv']+'</td><td>'+row['discripEv']+'</td> <td><button class="btn btn-success" ><a href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='+row["idEv"]+'">Update</a></button></td><td> <form action="delete.php" method="POST"><input type="hidden" value="<?php echo $pr['idEv']; ?> " name="idEv" /> <button class="btn btn-danger" ><a>Supprimer</a></button></form></td> </tr>')
            })
         }
      }); 
 })
 </script>
+<style>
+    #tab{
+    position:relative;
+    width:100%;
+    max-width: 100%;
+    table-layout: fixed;
+}
+#btn{
+    margin-left: 47%;
+    width:20%;
+    margin-bottom: 10px;
+    display: inline-block;
+
+
+}
+#search{
+    display: inline-block;
+    width:7%;
+    margin-top: 10px;
+
+}
+#searchText{
+    display: inline-block;
+    width:20%;
+    margin-bottom: 10px;
+    margin-left: 5px;
+
+}
+.chart{
+    position: relative;
+   
+    width:300px;
+}
+
+</style>
 </body>
 </html>

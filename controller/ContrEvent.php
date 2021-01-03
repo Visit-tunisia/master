@@ -1,6 +1,6 @@
 <?PHP
-    require_once "C:\wamp64\www\project\master\config3.php";
-    require_once 'C:\wamp64\www\project\master\Model\events.php';
+    require_once "C:\wamp64\www\ProjWeb\master\config2.php";
+    require_once 'C:\wamp64\www\ProjWeb\master\Model\events.php';
 
 class eventC
 {

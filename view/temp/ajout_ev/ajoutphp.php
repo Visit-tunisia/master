@@ -60,12 +60,12 @@ if (isset($_POST['discripEv'])) {
 if ($discripEv == null){
    echo ("discripEv est vide!!!!!!");
 }
-<<<<<<< HEAD
-$folder = "C:\wamp64\www\project\master\view\temp\img_dir";
 
-=======
+
+
+
 $folder = "..\img_dir\\";
->>>>>>> 93390d79e733a61acdfffa3e4033a657c8471e88
+
 $image = $_FILES['image']['name']; 
 
 $path = $folder.$image ; 
@@ -90,13 +90,10 @@ else{
 
 
 
-<<<<<<< HEAD
 
-  move_uploaded_file( $_FILES['file']['tmp_name'], "C:\wamp64\www\project\master\view\temp\img_dir"); 
-=======
-  echo"khraaaaa";
+
   move_uploaded_file( $_FILES['image']['tmp_name'], $path); 
->>>>>>> 93390d79e733a61acdfffa3e4033a657c8471e88
+
 
 
 

@@ -1,0 +1,36 @@
+#tab{
+    position:relative;
+    width:100%;
+    max-width: 100%;
+    table-layout: fixed;
+}
+#btn{
+    margin-left: 47%;
+    width:20%;
+    margin-bottom: 10px;
+    display: inline-block;
+
+
+}
+#search{
+    display: inline-block;
+    width:7%;
+    margin-top: 10px;
+
+}
+#searchText{
+    display: inline-block;
+    width:20%;
+    margin-bottom: 10px;
+    margin-left: 5px;
+
+}
+.chart{
+    position: relative;
+   
+    width:300px;
+}
+
+
+
+

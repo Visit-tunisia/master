@@ -44,6 +44,44 @@ class articleC
         }
     }
 
+    public function AfficherArticlePaginer($page,$perPage)
+    {
+        $start=($page>1) ? ($page * $perPage) - $perPage : 0;
+       // echo $start.' '. $perPage;
+       
+        $sql = "SELECT * FROM articles LIMIT {$start},{$perPage}";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->prepare($sql);
+            $liste->execute();
+            $liste=$liste->fetchAll(PDO::FETCH_ASSOC);
+            /*$total = $db->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+            $pages= ceil($total/$perPage);
+            echo $pages; */
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+     
+     public function calcTotalRows($perPage)
+     {
+        $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM articles";
+        $db = config::getConnexion();
+        try {
+
+            $liste = $db->query($sql);
+            $total = $db->query("SELECT FOUND_ROWS() as total")->fetch()['total'];
+            $pages= ceil($total/$perPage);
+            return $pages;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+     }
+
+
+
+
 
     function supprimerarticle($id)
     {
@@ -68,10 +106,6 @@ class articleC
 						TitreArticle = :titre, 
 						DescriptionArticle= :texte,
 						AuteurArticle = :auteur,
-
-					/*	source = :source,
-						urlImage = :urlImage,
-                        notifCreateur = :notifCreateur, */
                         DateArticle = :Datearticle,
                         DateCreation = :Datecreation,
                         ImageUrl = :Imageurl,
@@ -82,9 +116,6 @@ class articleC
                 'titre' => $article->getTitre(),
                 'texte' => $article->getTexte(),
                 'auteur' => $article->getAuteur(),
-             /*   'source' => $article->getSource(),
-                'urlImage' => $article->getUrlImage(),
-                'notifCreateur' => $article->getNotifCreateur(), */
                 'Datearticle' => $article->getDatearticle(),
                 'Datecreation'=> $article->getDateCreation(),
                 'Imageurl'=> $article->getImageUrl(),
@@ -136,4 +167,67 @@ class articleC
             die('Erreur: ' . $e->getMessage());
         }
     }
+    function sortdate3()
+    {
+        $sql = "SELECT * from articles order by Datecreation desc";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+    function sortdate4()
+    {
+        $sql = "SELECT * from articles order by Datecreation asc";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+    function chercherArticleAuteur($mot)
+    {
+        $sql = 'SELECT * FROM Articles                
+                WHERE AuteurArticle= :LEMOT;';
+       $db = config::getConnexion();
+       $req = $db->prepare($sql);
+       $req->bindValue(':LEMOT', $mot);
+        
+        $req->execute();
+        $result = $req->fetchAll(PDO::FETCH_OBJ);
+
+
+        $liste = json_decode(json_encode($result), true);
+
+        return $liste;  
+    }
+
+    public function returnLatestArticle()
+    {
+
+        $sql = "SELECT * FROM articles ORDER BY IdArticle DESC LIMIT 1";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $user = $query->fetch();
+
+
+            $result = json_decode(json_encode($user), true);
+
+            //echo $result['AuteurArticle'];
+            return $result;   
+        } catch (Exception $e) {
+            die('Erreur: ' . $e->getMessage());
+        }
+    }
+
+
+
 }

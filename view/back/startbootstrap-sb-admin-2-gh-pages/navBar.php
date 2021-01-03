@@ -140,7 +140,30 @@
                         <a class="collapse-item" href="tables.php">Tables</a>
                         <a class="collapse-item" href="Articles.php">Articles</a>
                         <a class="collapse-item" href="Event.php">Event</a>
+<<<<<<< HEAD
                         <a class="collapse-item" href="http://localhost/liv/views/login.php">login_livraison</a>
+=======
+
+                        <a class="collapse-item" href="Lieu.php">Lieu</a>
+                        <a class="collapse-item" href="StatsEvent.php">Statistiques</a>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArticles"
+                    aria-expanded="true" aria-controls="collapseArticles">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Articles</span>
+                </a>
+                <div id="collapseArticles" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="Articles.php">Articles list</a>
+                        <a class="collapse-item" href="ajouterArtic.php">Add an article</a>
+                        <a class="collapse-item" href="Statistiques.php">Statistiques</a>
+                        <a class="collapse-item" href="NewsLetter.php">NewsLetter</a>
+                        
+>>>>>>> 22545a16a963f2e3944365f97a88e408f93cd324
           
                     </div>
                 </div>
