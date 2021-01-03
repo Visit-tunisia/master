@@ -25,10 +25,11 @@ $liste=$evenement->afficherLieu();
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/tableauDeBoard.css" rel="stylesheet">
 
 </head>
 <body>
-
+<style></style>
 <div id="wrapper">
 
         <?php
@@ -43,7 +44,7 @@ $liste=$evenement->afficherLieu();
          <h2>Evenements</h2>
          
 
-    <a href="..\..\..\view\temp\ajout_li\ajout.php" class="btn btn-info">Ajouter un Lieu</a>
+    
 
 
    <!-- <?php
@@ -59,10 +60,11 @@ $liste=$evenement->afficherLieu();
                             <form  method="POST" >
         <input type="text" name="queryy" id="searchText" />
         <input type="button" value="Search" name="search"  id="search" />
+        <a href="..\..\..\view\temp\ajout_li\ajout.php" class="btn btn-info" id="btn">Ajouter un Lieu</a>
     </form>
 
 
-        <table class="table" style="width:100%">
+        <table id="tab"class="table" style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th>

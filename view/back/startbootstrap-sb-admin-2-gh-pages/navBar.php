@@ -140,7 +140,10 @@
                         <a class="collapse-item" href="tables.php">Tables</a>
                         <a class="collapse-item" href="Articles.php">Articles</a>
                         <a class="collapse-item" href="Event.php">Event</a>
-          
+
+                        <a class="collapse-item" href="Lieu.php">Lieu</a>
+                        <a class="collapse-item" href="StatsEvent.php">Statistiques</a>
+
                     </div>
                 </div>
             </li>
