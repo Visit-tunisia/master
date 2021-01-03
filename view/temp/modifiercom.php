@@ -21,7 +21,7 @@ if (
     isset($_POST["datedenaissance"])
     
 ) {
-	
+    
     if (
         !empty($_POST["login"]) &&
         !empty($_POST["prenom"]) &&
@@ -32,8 +32,8 @@ if (
     )
     {
     
-    	
-    	
+        
+        
     
 
 
@@ -48,7 +48,7 @@ if (
 
         );
     
-		
+        
         $compteC->modifiercompte($compte, $_GET['idUtili']);
         
        header('http://localhost/project/master/view/temp/comptea.php');
@@ -146,7 +146,7 @@ if (
                                     
                                 </div>
                                 
-								
+                                
 
 
 

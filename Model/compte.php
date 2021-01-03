@@ -8,6 +8,7 @@ class compte
     private $mail;
     private $datedenaissance;
     private $password;
+    private $role;
     
 
 
@@ -44,6 +45,7 @@ class compte
     }
     
     
+    
 
     public function setlogin($login)
     {
@@ -69,6 +71,7 @@ class compte
     {
         $this->password = $password;
     }
+    
     
 
     public function __construct($nom, $prenom, $login, $datedenaissance, $password, $mail)
