@@ -16,38 +16,26 @@
 	<body class="is-preload" id="body">
 
 		<!-- Wrapper -->
+		
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header 
-					id="header" class="header" style="color: black;">
-						<img src="assets/img/logo.png" width="10%" class="logo">
-						<!-- <a href="index.html" class="logo"><strong>Forty</strong></a> -->
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
-
+					
 				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Geric</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<?php
-								if(isset($_SESSION['role'])){
-									echo('<li><a href="http://localhost/project/master/view/login_projet/deconnexion.php" class="button fit">Log Out</a></li>');
-								}else{
-									echo('<li><a href="http://localhost/project/master/view/login_projet/login.php" class="button fit">Log In</a></li>');
-								}
-							?>
-							
-						</ul>
-					</nav>
+					
+
+
+<?php include_once('../front/header.php');?>
+					
+
+
+
+
+
+
+
+
+
 
 				<!-- Main -->
 					<div id="main" class="alt">
@@ -70,7 +58,7 @@
 												$username = "root";
 												$password = "";
 												try {
-													$conn = new PDO("mysql:host=$servername;dbname=projet", $username, $password);
+													$conn = new PDO("mysql:host=$servername;dbname=visit_tunisia", $username, $password);
 													// set the PDO error mode to exception
 													$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 												

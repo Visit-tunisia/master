@@ -124,7 +124,7 @@ $liste=$evenement->afficherEvent();
              //   $date = date('yy-m-d h:i:s');
             // echo $date;
               /*  if($result->num_rows>0)
-                { */require_once "C:\wamp64\www\project\master\config3.php";
+                { */require_once "C:\wamp64\www\ProjWeb\master\config2.php";
                     $db = config::getConnexion();
                     foreach ($liste as $pr)
                     {  ?>

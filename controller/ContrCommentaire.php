@@ -87,7 +87,7 @@ class CommentaireC
 			return 1;
 		}
 	}
-/*
+
 	public function nbrCommentairesTotale()
 	{
 		$sql = "SELECT COUNT(*) AS sum FROM commentaire";
@@ -107,5 +107,5 @@ class CommentaireC
 		$req->execute();
 		$result = $req->fetch(PDO::FETCH_OBJ);
 		return $result;
-	} */
+	} 
 }
