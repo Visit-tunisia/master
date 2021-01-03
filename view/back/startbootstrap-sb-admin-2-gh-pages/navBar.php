@@ -139,6 +139,7 @@
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="tables.php">Tables</a>
                         <a class="collapse-item" href="Articles.php">Articles</a>
+                        <a class="collapse-item" href="Event.php">Event</a>
           
                     </div>
                 </div>
