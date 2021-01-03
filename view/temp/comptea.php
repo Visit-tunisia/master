@@ -1,6 +1,6 @@
 <?php
-include 'D:/wamp/www/ooo/controller/contrcompte.php';
-include_once 'D:/wamp/www/ooo/model/compte.php';
+include 'D:/wamp/www/project/master/controller/contrcompte.php';
+include_once 'D:/wamp/www/project/master/Model/compte.php';
 
 $compte= new compteC();
 $liste=$compte->Affichercompte();

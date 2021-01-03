@@ -1,6 +1,6 @@
 <?php
-include "D:/wamp/www/ooo/controller/contrcompte.php";
-include_once "D:/wamp/www/ooo/model/compte.php";
+include "D:/wamp/www/project/master/controller/contrcompte.php";
+include_once "D:/wamp/www/project/master/Model/compte.php";
 
 
 
@@ -51,7 +51,7 @@ if (
 		
         $compteC->modifiercompte($compte, $_GET['idUtili']);
         
-       header('http://localhost/ooo/views/temp/comptea.php');
+       header('http://localhost/project/master/view/temp/comptea.php');
     } else
         echo "Missing information";
     }

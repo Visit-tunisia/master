@@ -62,6 +62,6 @@ $role="admin";
 
 $req="INSERT INTO `compte` (`nom`,`prenom`,`datedenaissance`,`login`,`password`,`mail`) values ('".$nom."','".$prenom."','".$datedenaissance."','".$login."','".$password."','".$mail."'); ";
 $conn->query($req);
-header('Location:../../../views/temp/comptea.php');
+header('Location:../../../view/temp/comptea.php');
 
 ?>
