@@ -25,29 +25,34 @@ if(isset($_POST['Submit']))
 	}
 
 
-	 $articlec=new article($_POST['titre'],$_POST['Description'],$_POST['Auteur'],$datetime,$datetimeC,$_POST['Imageurl'],$statuss);
+	$required = array('titre', 'Description', 'Auteur', 'Imageurl', 'dateC', 'date');
 
-    /*$articlec->Auteur= $_POST['Auteur'];
-	$articlec->date= $_POST['date'];
-	$articlec->Desc= $_POST['Description'];
-	$articlec->titre= $_POST['titre']; */
+// Loop over field names, make sure each one exists and is not empty
+	$error = false;
+	foreach($required as $field) {
+  		if (empty($_POST[$field])) {
+    		$error = true;
+  		}
+	}
+
+	if ($error) {
+  	echo "All fields are required !";
+	} else {
+  	echo "Submitted !";
+  	$articlec=new article($_POST['titre'],$_POST['Description'],$_POST['Auteur'],$datetime,$datetimeC,$_POST['Imageurl'],$statuss);
+
+   
 
 
 	 $ArtiC->ajouterArticle($articlec);
-	 /*
-
-	$result = $conn->query($sql);
-	if($result == TRUE)
-	{
-		echo "new row created";
+	 
 	}
-	else
-	{
-		echo "error" . "<br>" .$conn->error;
 
-	}
-	$conn->close();
-} */
+
+
+
+
+	 
 }
 
 ?>
@@ -86,6 +91,25 @@ if(isset($_POST['Submit']))
 
 </head>
 
+<script>
+  
+
+function validateForm() {
+  var x = document.forms["myForm"]["titre"].value;
+  if (x == "") {
+    alert("Title must be filled out");
+    return false;
+  }
+  else
+  {  
+
+  }
+  
+} 
+ </script>
+
+
+
 <div id="wrapper">
 
 
@@ -97,7 +121,7 @@ if(isset($_POST['Submit']))
 
 
 
-<form action="" method="post" class="form">
+<form name="myForm1" onsubmit="return validateForm()" action="" method="post" class="form">
 
 <table border="1" class="table">
 
