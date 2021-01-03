@@ -144,6 +144,23 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArticles"
+                    aria-expanded="true" aria-controls="collapseArticles">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Articles</span>
+                </a>
+                <div id="collapseArticles" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="Articles.php">Articles list</a>
+                        <a class="collapse-item" href="ajouterArtic.php">Add an article</a>
+                        <a class="collapse-item" href="Statistiques.php">Statistiques</a>
+                        <a class="collapse-item" href="NewsLetter.php">NewsLetter</a>
+                        
+          
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
