@@ -98,6 +98,30 @@
 									</header>
 								</article>
 							</section>
+							<?php
+session_start();
+require_once("model/fonctions.php");
+require_once("model/class.pdoPanier.inc.php");
+include("view/front/v_entete.php") ;
+include("view/front/v_bandeau.php") ;
+if(!isset($_REQUEST['uc']))
+     $uc = 'voir son panier';
+else
+	$uc = $_REQUEST['uc'];
+
+$pdo = PdoPanier::getPdoPanier();	 
+switch($uc)
+{
+	
+	case 'voirProduits' :
+		{include("controller/c_voirProduits.php");break;}
+	case 'gererPanier' :
+		{ include("controller/c_gestionPanier.php");break; }
+	
+}
+
+
+?>
 
 						<!-- Two -->
 							<section id="two">

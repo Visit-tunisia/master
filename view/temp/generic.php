@@ -106,8 +106,13 @@ while($res = $r->fetch(PDO::FETCH_ASSOC)):
 													$res1->execute();
 													$row = $res1->fetch(PDO::FETCH_ASSOC);
 	?>
+<<<<<<< HEAD
+	<div class="card" style="width: 90%;">
+	<img src="img_dir/<?php echo $res["imageEv"]; ?>" >
+=======
 	<div class="card" style="width: 600px;">
 	<img src="img_dir/<?php echo $res["imageEv"]; ?>"style="max-width:600px;max-height:300px;" >
+>>>>>>> 93390d79e733a61acdfffa3e4033a657c8471e88
 	<?php
 	
 	echo('
