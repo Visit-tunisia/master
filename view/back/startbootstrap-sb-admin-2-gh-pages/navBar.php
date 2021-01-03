@@ -41,7 +41,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Tableau de bord </span></a>
             </li>
 
             <!-- Divider -->
@@ -49,7 +49,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+               
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -57,15 +57,19 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span> Produits </span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.php">Buttons</a>
-                        <a class="collapse-item" href="cards.php">Cards</a>
+                        <h6 class="collapse-header">Gestion d'un produit</h6>
+                        <a class="collapse-item" href="ajout_produits.php">Ajouter un produit</a>
+                        <a class="collapse-item" href="listeproduits.php">Afficher les produits </a>
+                         <h6 class="collapse-header">Gestion catégorie</h6>
+                        <a class="collapse-item" href="ajout_categories.php">Ajouter une catégorie</a>
+                        <a class="collapse-item" href="afficher_categories.php">Afficher catégorie </a>
                     </div>
-                </div>
+                    </div>
+                
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -135,35 +139,10 @@
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="tables.php">Tables</a>
                         <a class="collapse-item" href="Articles.php">Articles</a>
-                        <a class="collapse-item" href="Event.php">Event</a>
-
           
                     </div>
                 </div>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArticles"
-                    aria-expanded="true" aria-controls="collapseArticles">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Articles</span>
-                </a>
-                <div id="collapseArticles" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="Articles.php">Articles list</a>
-                        <a class="collapse-item" href="ajouterArtic.php">Add an article</a>
-                        <a class="collapse-item" href="Statistiques.php">Statistiques</a>
-                        <a class="collapse-item" href="NewsLetter.php">NewsLetter</a>
-
-                        
-          
-                    </div>
-                </div>
-            </li>
-
-
-
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
