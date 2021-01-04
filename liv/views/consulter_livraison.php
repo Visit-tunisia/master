@@ -41,7 +41,7 @@ if($_SESSION["username"]==""){
         include "../core/livraisonC.php";
         include "../core/livreurC.php";
         include "../entity/livreur.php";
-        include "../entity/trie.php";
+        
      
 
 

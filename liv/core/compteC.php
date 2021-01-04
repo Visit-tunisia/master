@@ -10,7 +10,7 @@ class compteC {
 
 
 	function authentification($username,$pasword){
-		$sql="select * from compte where username='".$username."' and pasword='".$pasword."'";
+		$sql="select * from compteliv where username='".$username."' and pasword='".$pasword."'";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -22,7 +22,7 @@ class compteC {
 	}
 	function recuperercompteadmin($username,$pasword){
 		$admin = "admin%";
-		$sql="select * from compte where username='".$username."' and pasword='".$pasword."' and (type = 'admin')";
+		$sql="select * from compteliv where username='".$username."' and pasword='".$pasword."' and (type = 'admin')";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);

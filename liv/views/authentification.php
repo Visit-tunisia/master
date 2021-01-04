@@ -30,7 +30,7 @@ include "../core/compteC.php";
          
        
 
-            header('Location: checkout_billing_info.php');
+            header('Location: consulter_livraison.php');
           
         }
     
