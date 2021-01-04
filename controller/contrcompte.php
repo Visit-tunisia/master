@@ -1,6 +1,6 @@
 <?PHP
-    include "D:/wamp/www/project/master/config.php";
-    require_once 'D:/wamp/www/project/master/Model/compte.php';
+    include "C:/wamp64/www/ProjWeb/master/config2.php";
+    require_once 'C:/wamp64/www/ProjWeb/master/Model/compte.php';
 
 class compteC
 {

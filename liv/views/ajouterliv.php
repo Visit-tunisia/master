@@ -17,7 +17,8 @@ $liv=new livraisonC();
 $liv->ajouterlivraison($livraison,$notifications);
 header('Location: afficher_liv.php');
 
-}else{
+}
+else{
 	echo "vĂ©rifier les champs";
 }
 ?>

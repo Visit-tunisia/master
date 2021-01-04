@@ -151,7 +151,7 @@ $liste=$evenement->afficherEvent();
   white-space: nowrap;
   text-overflow: ellipsis;"><?php echo $pr['pdiscripEv']; ?></td>
                 <td><?php echo $pr['discripEv']; ?></td> 
-                <td><a class="btn btn-success" href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id=<?php echo $pr['idEv']; ?>">Update</a></td>
+                <td><a class="btn btn-success" href="http://localhost/ProjWeb/master/view/temp/modifier_ev/modifierEv.php?id=<?php echo $pr['idEv']; ?>">Update</a></td>
                 <td> <form action="delete.php" method="POST"><input type="hidden" value="<?php echo $pr['idEv']; ?> " name="idEv" /> <button class="btn btn-danger" ><a>Supprimer</a></button></form></td>
             </tr>
      

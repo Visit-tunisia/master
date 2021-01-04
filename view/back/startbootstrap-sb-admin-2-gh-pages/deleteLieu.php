@@ -7,7 +7,7 @@ $password = "";
 
 //PDO Database Connection
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=projet", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=visit_tunisia", $username, $password);
  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
  echo 'Connection failed: ' . $e->getMessage();
@@ -29,6 +29,6 @@ if ($id == null){
      $conn->exec($sql);
 
 
-header('Location: http://localhost/project/master/view/back/startbootstrap-sb-admin-2-gh-pages/lieu.php');
+header('Location: http://localhost/ProjWeb/master/view/back/startbootstrap-sb-admin-2-gh-pages/lieu.php');
 exit();
 ?>

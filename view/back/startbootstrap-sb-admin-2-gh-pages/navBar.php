@@ -140,12 +140,16 @@
                         <a class="collapse-item" href="tables.php">Tables</a>
                         <a class="collapse-item" href="Articles.php">Articles</a>
                         <a class="collapse-item" href="Event.php">Event</a>
-<<<<<<< HEAD
-                        <a class="collapse-item" href="http://localhost/liv/views/login.php">login_livraison</a>
+
+                        <a class="collapse-item" href="../../../liv/views/login.php">login_livraison</a>
 =======
 
                         <a class="collapse-item" href="Lieu.php">Lieu</a>
                         <a class="collapse-item" href="StatsEvent.php">Statistiques</a>
+
+                    <a class="collapse-item" href="http://localhost/ProjWeb/master/view/temp/comptea.php"</a>
+                <a class="collapse-item" href="http://localhost/ProjWeb/master/view/back/login_projet/inscription/inscription.html"</a>
+             <a class="collapse-item" href="http://localhost/ProjWeb/master/view/back/login_projet/login.html"</a>
 
                     </div>
                 </div>

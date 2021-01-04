@@ -1,6 +1,6 @@
 <?php
-include 'D:/wamp/www/project/master/controller/contrcompte.php';
-include_once 'D:/wamp/www/project/master/Model/compte.php';
+include 'C:/wamp64/www/ProjWeb/master/Controller/contrcompte.php';
+include_once 'C:/wamp64/www/ProjWeb/master/Model/compte.php';
 
 $compte= new compteC();
 $liste=$compte->Affichercompte();
@@ -33,7 +33,7 @@ $liste=$compte->Affichercompte();
 <div id="wrapper">
 
         <?php
-            include('navBar.php');
+            include('../back/startbootstrap-sb-admin-2-gh-pages/navBar.php');
         ?>
 
 
@@ -125,7 +125,7 @@ if (isset($_GET['recherche'])) {
                 <td><?php echo $pr['datedenaissance']; ?></td>
                 <td><?php echo $pr['password']; ?></td>
                 <td><a class="btn btn-success" href="modifiercom.php?idUtili=<?php echo $pr['idUtili']; ?>">Update</a></td>
-         <td><a class="btn btn-danger"href="../../controller/supp.php?idUtili=<?php echo $pr['idUtili']; ?>">Delete</a></td>
+         <td><a class="btn btn-danger"href="../../Controller/supp.php?idUtili=<?php echo $pr['idUtili']; ?>">Delete</a></td>
  <!-- <!-- - <td> <form method="POST" action="D:/wamp/www/ooo/controller/supp.php"> --> -->
                                             <!-- <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger"> -->
                                             // <!-- <input type="hidden" value=<?PHP //echo $pr['idUtili']; ?> name="idUtili"> -->

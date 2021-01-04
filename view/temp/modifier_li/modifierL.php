@@ -16,7 +16,7 @@
 
                 //PDO Database Connection
                 try {
-                    $conn = new PDO("mysql:host=$servername;dbname=projet", $username, $password);
+                    $conn = new PDO("mysql:host=$servername;dbname=visit_tunisia", $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 } catch(PDOException $e) {
                 echo 'Connection failed: ' . $e->getMessage();

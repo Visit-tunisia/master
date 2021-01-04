@@ -12,7 +12,7 @@ $livreur =new livreur($cin,$nom,$prenom,$email,$etat);// constructeur
 
 $liv=new livreurC();
 $liv->ajouterlivreur($livreur);
-header('Location: charts-flot.html');
+header('Location: ajouter_livreur.php');
 
 }else{
 	echo "vĂ©rifier les champs";

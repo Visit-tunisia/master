@@ -109,7 +109,7 @@ $liste=$evenement->afficherLieu();
             <tbody>
 
                 <?php
-require_once "C:\wamp64\www\project\master\config3.php";
+require_once "C:\wamp64\www\ProjWeb\master\config2.php";
                     $db = config::getConnexion();
                     foreach ($liste as $pr)
                     {  ?>
@@ -118,7 +118,7 @@ require_once "C:\wamp64\www\project\master\config3.php";
                 <td><?php echo $pr['emplacementL']; ?></td>
                 <td><?php echo $pr['capaciteL']; ?></td>
 
-                <td><a class="btn btn-success" href="http://localhost/project/master/view/temp/modifier_li/modifierL.php?id=<?php echo $pr['idL']; ?>">Update</a></td>
+                <td><a class="btn btn-success" href="http://localhost/ProjWeb/master/View/temp/modifier_li/modifierL.php?id=<?php echo $pr['idL']; ?>">Update</a></td>
                 <td> <form action="deleteLieu.php" method="POST"><input type="hidden" value="<?php echo $pr['idL']; ?> " name="idL" /> <button class="btn btn-danger" ><a>Supprimer</a></button></form></td>
             </tr>
      

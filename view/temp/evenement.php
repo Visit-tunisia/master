@@ -41,7 +41,7 @@
 							<li><a href="#" class="button primary fit">Get Started</a></li>
 							<?php
 								if(isset($_SESSION['role'])){
-									echo('<li><a href="http://localhost/project/master/view/login_projet/deconnexion.php" class="button fit">Log Out</a></li>');
+									echo('<li><a href="http://localhost/ProjWeb/master/view/login_projet/deconnexion.php" class="button fit">Log Out</a></li>');
 								}else{
 									echo('<li><a href="http://localhost/project/master/view/login_projet/login.php" class="button fit">Log In</a></li>');
 								}
@@ -59,7 +59,7 @@
 					$password = "";
 
 					try {
-						$conn = new PDO("mysql:host=$servername;dbname=projet", $username, $password);
+						$conn = new PDO("mysql:host=$servername;dbname=visit_tunisia", $username, $password);
 						// set the PDO error mode to exception
 						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 						echo "";

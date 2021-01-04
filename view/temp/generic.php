@@ -16,7 +16,7 @@
 	<body class="is-preload" id="body">
 
 		<!-- Wrapper -->
-		
+		<?php include_once("../front/header.php");?>
 			<div id="wrapper">
 
 				<!-- Header -->
@@ -25,7 +25,7 @@
 					
 
 
-<?php include_once('../front/header.php');?>
+
 					
 
 
@@ -110,7 +110,7 @@ while($res = $r->fetch(PDO::FETCH_ASSOC)):
 	<p class="card-text">'.$res["pdiscripEv"].'</p>
 	</center>
 	<center>
-	<button class="btn btncard" style="margin-top:25px;"><a href="http://localhost/project/master/view/temp/evenement.php?id='.$res["idEv"].'">Lire la suite</a></button> </br>
+	<button class="btn btncard" style="margin-top:25px;"><a href="http://localhost/ProjWeb/master/view/temp/evenement.php?id='.$res["idEv"].'">Lire la suite</a></button> </br>
 	<!--<button  class="btn btncard" ><a href="http://localhost/project/master/view/temp/modifier_ev/modifierEv.php?id='.$res["idEv"].'" >Modifier</a></button> -->
 	<form action="delete.php" method="post">
 	<input type="hidden" value="'.$res["idEv"].'"  name="idEv" />
